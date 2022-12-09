@@ -20,7 +20,7 @@ public class Conexionlobby {
     ResultSet rs;
     private static final String URL="jdbc:mysql://localhost:3306/bdinscri";
     private static final String USER = "root";
-    private static final String PASS = "123456";
+    private static final String PASS = "euromillon123";
     public Conexionlobby(){
         try {
         Class.forName("com.mysql.cj.jdbc.Driver");

@@ -34,6 +34,7 @@ public class MatriculaForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
 
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -245,7 +246,7 @@ public class MatriculaForm extends javax.swing.JFrame {
             !fechafi.equals("")||!moda.equals("")||!carre.equals("")||!dni.equals("")||
             !pre.equals("")||!dis.equals("")){
             dao.create(new Alumno(0,nom,ape,cic));
-            cdi.create(new Carrera(0,carre));
+            cdi.create(new Carrera(0 ,carre));
             ddi.create(new Detalle(0,pre,fechai,fechafi,moda));
             idi.create(new Informacion(0,dis,dni));
             limpiar_table();
@@ -268,7 +269,7 @@ public class MatriculaForm extends javax.swing.JFrame {
         String pre = txtprecio.getText();
         String dis = txtdistrito.getText();
         if(fila>=0){
-            int result = JOptionPane.showConfirmDialog(this,"Realmente desea modificarel Registro?", "Swing Tester",
+            int result = JOptionPane.showConfirmDialog(this,"Realmente desea modificar el Registro?", "Swing Tester",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE);
             if(result == JOptionPane.YES_OPTION){
@@ -342,18 +343,21 @@ public class MatriculaForm extends javax.swing.JFrame {
         List<Carrera> lista1 = cdi.readAll();
         List<Detalle> lista2 = ddi.readAll();
         List<Informacion> lista3=idi.readAll();
-        Object datos[] =new Object[4];
+        Object datos[] =new Object[11];
         for(int i=0;i<lista.size();i++){
             datos[0]=lista.get(i).getIdalumno();
             datos[1]=lista.get(i).getNombre();
-            datos[2]=lista.get(i).getApellido();               
-            model.addRow(datos);   
-        }
-        Object fila[] =new Object[6];
-        for(int j=0;j<lista1.size();j++){
-            fila[4]=lista1.get(j).getIdcarrera();
-            fila[4]=lista1.get(j).getCarre();
-            model.addRow(datos);    
+            datos[2]=lista.get(i).getApellido();
+            datos[3]=lista3.get(i).getDni();
+            datos[4]=lista3.get(i).getDistrito();
+            datos[5]=lista1.get(i).getCarre();
+            datos[6]=lista.get(i).getCiclo();
+            datos[7]=lista2.get(i).getPrecio();
+            datos[8]=lista2.get(i).getFechainicio();
+            datos[9]=lista2.get(i).getFechafinal();
+            datos[10]=lista2.get(i).getModalidad();
+            
+            model.addRow(datos);
         }
         tbdatos.setModel(model);
     }

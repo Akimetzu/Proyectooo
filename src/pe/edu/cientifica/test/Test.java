@@ -22,9 +22,9 @@ public class Test {
         //editar();
         //eliminar();
         if(Conexion.getConexion()!=null){
-            System.out.println("SI");
+            System.out.println("Conectado");
         }else{
-            System.out.println("NO");
+            System.out.println("Conectalo ps mano");
         }
     }
     
